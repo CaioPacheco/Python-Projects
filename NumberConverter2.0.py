@@ -29,4 +29,4 @@ def decimal_to_hexadecimal(decimal: int, str_mode: bool = True) -> Union[int, st
 
 
 while True:
-    print(decimal_to_binary(int(input("Entrada:"))))
+    print(decimal_to_hexadecimal(int(input("Entrada:"))))
