@@ -1,23 +1,21 @@
+#Functions for a basic analysis of a list of numbers, probably not the best ways to do it but it works.
+
 import random
+import time
 
-
-def generate_random_list(n=10):
-    """
-    Generates a list of n random integers between 1 and 100.
-    """
+def generate_random_list(n=10, min=1, max=100):
+    # Generates a list of n random integers between 1 and 100.
     try:
         random_list = []
         for i in range(n):
-            random_list.append(random.randint(1, 100))
+            random_list.append(random.randint(min, max))
         return random_list
     except ValueError as e:
         print(f"An error occurred: {e}")
 
 
 def find_max(lst):
-    """
-    Returns the maximum value in a list.
-    """
+    # Returns the maximum value in a list.
     try:
         max_val = lst[0]
         for val in lst:
@@ -29,9 +27,7 @@ def find_max(lst):
 
 
 def find_min(lst):
-    """
-    Returns the minimum value in a list.
-    """
+    # Returns the minimum value in a list.
     try:
         min_val = lst[0]
         for val in lst:
@@ -43,9 +39,7 @@ def find_min(lst):
 
 
 def find_average(lst):
-    """
-    Returns the average value of a list.
-    """
+    # Returns the average value of a list.
     try:
         total = 0
         for val in lst:
@@ -56,9 +50,7 @@ def find_average(lst):
 
 
 def find_median(lst):
-    """
-    Returns the median value of a list.
-    """
+    # Returns the median value of a list.
     try:
         lst.sort()
         if len(lst) % 2 == 0:
@@ -70,9 +62,7 @@ def find_median(lst):
 
 
 def find_mode(lst):
-    """
-    Returns the mode value of a list.
-    """
+    # Returns the mode value of a list.
     try:
         count_dict = {}
         for val in lst:
@@ -91,9 +81,7 @@ def find_mode(lst):
 
 
 def find_range(lst):
-    """
-    Returns the range of a list.
-    """
+    # Returns the range of a list.
     try:
         return find_max(lst) - find_min(lst)
     except TypeError as e:
@@ -101,27 +89,16 @@ def find_range(lst):
 
 
 def analyze_list(lst):
-    """
-    Prints various statistics of a list.
-    """
+    # Prints various statistics of a list.
     try:
+        start_time = time.time()
         print("Maximum value:", find_max(lst))
         print("Minimum value:", find_min(lst))
         print("Average value:", find_average(lst))
         print("Median value:", find_median(lst))
         print("Mode value:", find_mode(lst))
         print("Range:", find_range(lst))
+        end_time = time.time()
+        print("Time taken to process:", end_time - start_time, "seconds")
     except Exception as e:
         print(f"An error occurred: {e}")
-
-    try:
-        random_list = generate_random_list(50)
-        print("Generated list:", random_list)
-        print("\nList statistics:")
-        analyze_list(random_list)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-
-test = generate_random_list(20)
-analyze_list(test)
