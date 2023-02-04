@@ -1,3 +1,7 @@
+#This is function that converts a resistor's value and tolerance to its color code.
+#The function receives a string with the value and tolerance of the resistor and returns a list with the color code.
+#The resistor's value and tolerance are separated by a space.
+
 def IEC60062(resistencia):
     grandeza = ''
     list_ = resistencia.split(' ')
@@ -68,6 +72,7 @@ def IEC60062(resistencia):
         grandeza = 9
         pos = list_[0].find('G')
         
+        
     valor = list_[0][:pos]
         
     
@@ -99,11 +104,11 @@ def IEC60062(resistencia):
     
     return resposta
         
-    
-    #print(resposta)
-    '''print(algarismos)
-    print(grandeza)
-    print(tolerancia)'''
-    
-    
-#IEC60062('1- 10')
+while True:
+    try:
+        print(IEC60062(input('Digite o valor e a tolerância do resistor na formatação correta: ')))
+    except:
+        print('Erro! Digite o valor e a tolerância do resistor na formatação correta: ')
+        continue
+    else:
+        break
